@@ -5,7 +5,7 @@ import seaborn as sns
 non_errors = ['200 OK', 'User Login', 'File Uploaded']
 
 # Load the log data
-data = pd.read_csv('data/logs.csv', parse_data=['timestamp'])
+data = pd.read_csv('data/logs.csv', parse_dates=['timestamp'])
 
 # Extract data from timestamp
 data['date'] = data['timestamp'].dt.date
@@ -26,6 +26,8 @@ plt.title("Errors by Type")
 plt.ylabel("Counts")
 plt.xticks(rotation=45)
 plt.tight_layout()
+
+plt.savefig("images/error_types.png")
 plt.show()
 
 # Plot errors per day using line chart
@@ -35,4 +37,6 @@ plt.title("Errors per day")
 plt.xlabel("Date")
 plt.ylabel("# of Errors")
 plt.tight_layout()
+
+plt.savefig("images/error_per_day.png")
 plt.show()
